@@ -23,7 +23,7 @@ public class ControllerIncidente {
     }
 
     @GetMapping("/reporte")
-    @PreAuthorize("hasRole('POLI')")
+    //@PreAuthorize("hasRole('POLI')")
     public List<ReporteTipoIncidenteDTO> reporte() {
         return service.obtenerReporteCantidadPorTipo();
     }
