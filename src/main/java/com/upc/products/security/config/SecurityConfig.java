@@ -16,10 +16,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
+
     private final CustomUserDetailsService userDetailsService;
     private final JwtRequestFilter jwtRequestFilter;
 
@@ -46,8 +48,10 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/authenticate").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/api/authenticate").permitAll()
+                        //.requestMatchers("/api/proveedores").hasRole("ADMIN")
+                        .anyRequest().authenticated() //los que tienen @PreAuthorize pueden ser llamados con tan solo autenticarse
+                        //.anyRequest().denyAll() // aquí se obliga a todos los endpoints usar @PreAuthorize
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -58,4 +62,18 @@ public class SecurityConfig {
 
         return http.build();
     }
+
+    //Filter opcional si se desea configurar globalmente el acceso a los endpoints sin anotaciones
+    // en cada endpoint
+//    @Bean
+//    public CorsFilter corsFilter() {
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        CorsConfiguration config = new CorsConfiguration();
+//        config.setAllowCredentials(true);
+//        config.addAllowedOrigin("${ip.frontend}");
+//        config.addAllowedMethod("*");
+//        config.addExposedHeader("Authorization");
+//        source.registerCorsConfiguration("/**", config); //para todos los paths
+//        return new CorsFilter(source);
+//    }
 }
