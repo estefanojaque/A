@@ -1,16 +1,12 @@
 package com.upc.products.security.entities;
-import jakarta.persistence.*;
-import lombok.*;
 
-@Setter
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
+import jakarta.persistence.*;
+import lombok.Data;
+
 @Entity
 @Table(name = "roles")
 @Data
 public class Role {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

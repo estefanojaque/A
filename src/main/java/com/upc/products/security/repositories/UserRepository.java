@@ -1,6 +1,5 @@
 package com.upc.products.security.repositories;
 
-
 import com.upc.products.security.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

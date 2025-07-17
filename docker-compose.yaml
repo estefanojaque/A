@@ -27,8 +27,8 @@ services:
       - my-network-name
     environment:
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=admin
-      - POSTGRES_DB=db_productos
+      - POSTGRES_PASSWORD=2102
+      - POSTGRES_DB=apaesteguiedquen
     ports:
       - "5433:5432"
 volumes:

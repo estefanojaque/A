@@ -1,4 +1,5 @@
 package com.upc.products.security.filters;
+
 import com.upc.products.security.services.CustomUserDetailsService;
 import com.upc.products.security.util.JwtUtil;
 import jakarta.servlet.FilterChain;
@@ -14,14 +15,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
-//(1)
-/*
- Este filtro intercepta cada solicitud entrante para verificar si hay un token JWT válido
- en el encabezado y autenticar al usuario en el contexto de seguridad.
- */
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
-
     private final CustomUserDetailsService userDetailsService;
     private final JwtUtil jwtUtil;
 
@@ -29,11 +24,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         this.userDetailsService = userDetailsService;
         this.jwtUtil = jwtUtil;
     }
-
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
-            throws ServletException, IOException {
-
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
         final String authorizationHeader = request.getHeader("Authorization");
 
         String username = null;

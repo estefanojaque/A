@@ -1,6 +1,5 @@
 package com.upc.products.security.services;
 
-
 import com.upc.products.security.entities.User;
 import com.upc.products.security.repositories.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,8 +13,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class CustomUserDetailsService implements UserDetailsService {
-
+public class CustomUserDetailsService  implements UserDetailsService {
     private final UserRepository userRepository;
 
     public CustomUserDetailsService(UserRepository userRepository) {

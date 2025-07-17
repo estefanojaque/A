@@ -6,12 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//@CrossOrigin(origins = "${ip.frontend}")
-@CrossOrigin(origins = "${ip.frontend}", allowCredentials = "true", exposedHeaders = "Authorization") //para cloud
+@CrossOrigin(origins = "*", allowedHeaders = "*", exposedHeaders = "Authorization")
 @RestController
 @RequestMapping("/api")
 public class TestController {
-
     @GetMapping("/admin")
     @PreAuthorize("hasRole('ADMIN')")
     public String adminEndpoint() {
@@ -19,8 +17,9 @@ public class TestController {
     }
 
     @GetMapping("/user")
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('USER')")
     public String userEndpoint() {
         return "This is the user endpoint, accessible to users with USER or ADMIN role.";
     }
 }
+

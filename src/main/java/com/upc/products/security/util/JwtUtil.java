@@ -12,10 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-//Clase que se encargara de generar y validar los tokens JWT.
 @Component
 public class JwtUtil {
-
     @Value("${jwt.secret}")
     private String secretKey;
 

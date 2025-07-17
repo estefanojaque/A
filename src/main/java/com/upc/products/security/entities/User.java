@@ -1,19 +1,15 @@
 package com.upc.products.security.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
 
 import java.util.HashSet;
 import java.util.Set;
-@Setter
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Entity
 @Table(name = "users")
 @Data
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

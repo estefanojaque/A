@@ -1,6 +1,5 @@
 package com.upc.products.security.dtos;
 
-
 import java.util.Set;
 
 @lombok.Data
